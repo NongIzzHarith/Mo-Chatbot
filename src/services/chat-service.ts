@@ -73,7 +73,7 @@ export class ChatService {
   }
 
   private mergeMemoryCandidates(
-    modelCandidates: MemoryCandidate[] | undefined,
+    modelCandidates: Array<{ key: string; value: string; confidence: number }> | undefined,
     localCandidates: MemoryCandidate[]
   ): MemoryCandidate[] {
     return filterMemoryCandidates([...(modelCandidates ?? []), ...localCandidates]);
@@ -145,6 +145,7 @@ export class ChatService {
       });
     } catch (error) {
       const errorMessage = (error as Error).message;
+      console.error("[ChatService] Provider error:", errorMessage, error);
       if (errorMessage.includes("DEEPSEEK_API_KEY")) {
         throw error;
       }

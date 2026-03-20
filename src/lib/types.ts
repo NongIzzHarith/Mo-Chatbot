@@ -82,6 +82,6 @@ export interface StructuredModelReply {
   reply: string;
   next_step?: string;
   citation_ids?: string[];
-  memory_candidates?: MemoryCandidate[];
+  memory_candidates?: Array<{ key: string; value: string; confidence: number }>;
   requires_scholar_referral?: boolean;
 }

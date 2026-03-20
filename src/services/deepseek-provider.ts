@@ -11,7 +11,7 @@ const structuredReplySchema = z.object({
   memory_candidates: z
     .array(
       z.object({
-        key: z.enum(["name", "goal", "recurring_struggle", "tone_preference", "language_preference"]),
+        key: z.string().min(1),
         value: z.string().min(1),
         confidence: z.number().min(0).max(1)
       })

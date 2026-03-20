@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Islamic Counselor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace">
+        <aside class="sidebar" aria-label="Conversation list">
+          <div class="sidebar-copy">
+            <span class="sidebar-kicker">Private space</span>
+            <h1>Guided Conversations</h1>
+            <p>
+              A gentle interface for reflection, support, and faith-centered
+              reminders.
+            </p>
+          </div>
+
+          <button class="new-chat-btn" id="newChatButton" type="button">
+            Start New Chat
+          </button>
+
+          <section class="sidebar-section">
+            <span class="section-label">Recent</span>
+
+            <article class="thread-card active-thread">
+              <span class="thread-title">Finding calm tonight</span>
+              <p class="thread-preview">
+                How do I slow down when my mind feels too loud?
+              </p>
+              <span class="thread-time">Active now</span>
+            </article>
+
+            <article class="thread-card">
+              <span class="thread-title">Consistency in prayer</span>
+              <p class="thread-preview">
+                Small steps to rebuild a steady rhythm in salah.
+              </p>
+              <span class="thread-time">Yesterday</span>
+            </article>
+
+            <article class="thread-card">
+              <span class="thread-title">Family tension</span>
+              <p class="thread-preview">
+                Looking for a patient way to respond with adab.
+              </p>
+              <span class="thread-time">Mar 18</span>
+            </article>
+          </section>
+
+          <aside class="sidebar-note">
+            <span class="section-label">Reflection</span>
+            <p>
+              Designed to feel calm, present, and focused on the conversation.
+            </p>
+          </aside>
+        </aside>
+
+        <section class="conversation-panel" aria-label="Chat interface">
+          <div class="referral-banner" id="referralBanner" hidden>
+            <p>This topic may benefit from the guidance of a qualified Islamic scholar. Please consider consulting one.</p>
+            <button type="button" class="referral-dismiss" id="referralDismiss" aria-label="Dismiss">&#x2715;</button>
+          </div>
+
+          <header class="panel-topbar">
+            <div class="panel-brand">
+              <div class="brand-mark-shell">
+                <img
+                  class="brand-mark"
+                  src="assets/tuxedo-cat.png"
+                  alt="Tuxedo cat"
+                />
+              </div>
+              <div>
+                <span class="brand-label">Bismillah</span>
+                <h2>Islamic Counselor</h2>
+                <p class="brand-subtitle">
+                  Faith-aware listening with a calm chat experience.
+                </p>
+              </div>
+            </div>
+
+            <div class="presence-pill">
+              <span class="status-dot"></span>
+              Listening now
+            </div>
+          </header>
+
+          <section class="chat-scroll" id="chatScroll">
+            <section class="welcome-banner">
+              <div class="welcome-copy">
+                <span class="header-badge">Compassionate support</span>
+                <h3>Share what is on your mind, one honest message at a time.</h3>
+                <p>
+                  A space for reflection, support, and faith-centered
+                  reminders. Share what is on your heart.
+                </p>
+              </div>
+            </section>
+
+            <section class="prompt-row" aria-label="Suggested prompts">
+              <button
+                class="prompt-chip"
+                type="button"
+                data-prompt="I feel overwhelmed and I need help calming down."
+              >
+                I feel overwhelmed
+              </button>
+              <button
+                class="prompt-chip"
+                type="button"
+                data-prompt="I have been struggling to stay consistent with salah."
+              >
+                I am struggling with salah
+              </button>
+              <button
+                class="prompt-chip"
+                type="button"
+                data-prompt="How can I respond with patience during family conflict?"
+              >
+                Family conflict advice
+              </button>
+            </section>
+
+            <div class="thread-divider">
+              <span>Today</span>
+            </div>
+
+            <section class="chat-body" id="chatBody" aria-live="polite"></section>
+          </section>
+
+          <form class="composer" id="chatForm">
+            <div class="composer-input">
+              <label class="sr-only" for="messageInput">Type your message</label>
+              <textarea
+                id="messageInput"
+                name="message"
+                rows="1"
+                placeholder="Share what you are going through..."
+              ></textarea>
+              <p class="composer-hint">Enter to send. Shift + Enter for a new line.</p>
+            </div>
+            <button type="submit">Send</button>
+          </form>
+        </section>
+      </section>
+    </main>
+
+    <div class="onboarding-overlay" id="onboardingOverlay" role="dialog" aria-modal="true" aria-label="Welcome">
+      <div class="onboarding-card">
+        <span class="sidebar-kicker">Bismillah</span>
+        <h2>Welcome to Mo</h2>
+        <p>A calm, faith-centered space for reflection and support. Before we begin, what would you like to be called?</p>
+        <form id="onboardingForm">
+          <label class="sr-only" for="nameInput">Your first name</label>
+          <input
+            type="text"
+            id="nameInput"
+            name="name"
+            placeholder="Your first name..."
+            maxlength="60"
+            autocomplete="given-name"
+            required
+          />
+          <button type="submit">Begin</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

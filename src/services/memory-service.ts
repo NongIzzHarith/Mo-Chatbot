@@ -1,6 +1,8 @@
 import type { MemoryCandidate, MemoryItem } from "../lib/types.js";
 
-const allowedKeys = new Set<MemoryCandidate["key"]>([
+type MemoryKey = MemoryCandidate["key"];
+
+const allowedKeys = new Set<string>([
   "name",
   "goal",
   "recurring_struggle",
@@ -44,10 +46,10 @@ export function deriveLocalMemoryCandidates(input: { text: string; locale: strin
   return filterMemoryCandidates(candidates);
 }
 
-export function filterMemoryCandidates(candidates: MemoryCandidate[]): MemoryCandidate[] {
+export function filterMemoryCandidates(candidates: Array<{ key: string; value: string; confidence: number }>): MemoryCandidate[] {
   const seen = new Set<string>();
 
-  return candidates.filter((candidate) => {
+  return (candidates as MemoryCandidate[]).filter((candidate) => {
     if (!allowedKeys.has(candidate.key)) {
       return false;
     }
